@@ -16,6 +16,8 @@ cli.with {
     w(longOpt: 'warn', required: false, args: 1, type: String, 'WARN threshold')
     c(longOpt: 'critical', required: false, args: 1, type: String, 'CRITICAL threshold')
     m(longOpt: 'match', required: false, args: 1, type: String, 'result must match this string or script will exit with CRITICAL status')
+    s(longOpt: 'subattribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'path names for complex attribute values')
+
 }
 
 def opt = cli.parse(args)
@@ -35,6 +37,7 @@ if (opt.'?')
     def thresholdTestAttribute = opt.a
     def warning = opt.w
     def critical = opt.c
+    def subattribute = opt.s
 
     if (warning && !critical) {
         println "ERROR: critical must also be specified"
@@ -68,7 +71,9 @@ if (opt.'?')
 
     //J4pReadRequest request = new J4pReadRequest("java.lang:type=Memory","HeapMemoryUsage");
     J4pReadRequest request = new J4pReadRequest("${bean}", "${attrListString}");
-    //request.setPath("used");
+
+    if (subattribute)
+        request.setPath(subattribute);
 
      J4pReadResponse response = client.execute(request);
      String firstAttributeResponseValue
@@ -104,7 +109,7 @@ if (opt.'?')
             println "CRITICAL: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${critical}"
             System.exit(2)
         } else if (testAttributeAsNumber > warning) {
-            println "WARN: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${warn}"
+            println "WARN: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${warning}"
             System.exit(1)
         } else {
             println "OK: ${thresholdTestAttribute} value ${testAttributeAsNumber} " +  (isMap ? response.getValue() : "")

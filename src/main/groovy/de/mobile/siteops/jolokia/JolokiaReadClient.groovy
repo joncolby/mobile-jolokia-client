@@ -14,7 +14,7 @@ cli.with {
     p(longOpt: 'port', required: true, args: 1, 'remote port')
     b(longOpt: 'bean', required: true, args: 1, 'jmx bean name')
     a(longOpt: 'attribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'seperate multiple attributes with comma.')
-    s(longOpt: 'subattribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'path names for nested attribute values')
+    s(longOpt: 'subattribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'path names for complex attribute values')
 }
 
 def opt = cli.parse(args)
@@ -60,10 +60,14 @@ if (opt.'?')
     else
         prefix = attrListString + '='
 
-    response.getValue().each { println prefix + it}
+    def responseValue = response.getValue()
 
-        }
-     catch (J4pException j4pException) {
+    if (responseValue instanceof Map)
+            responseValue.each { println prefix + it}
+    else
+             println prefix + responseValue
+
+    } catch (J4pException j4pException) {
         println j4pException.message
         System.exit(1)
     } catch (InstanceNotFoundException instanceNotFoundException){
