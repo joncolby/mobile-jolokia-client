@@ -62,25 +62,25 @@
       <file leaf-file-name="JolokiaGenericNagiosClient.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaGenericNagiosClient.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="98" selection-start="4082" selection-end="4086" vertical-scroll-proportion="-18.961538">
+            <state line="111" column="98" selection-start="4082" selection-end="4086" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JolokiaSearchClient.groovy" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="JolokiaSearchClient.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaSearchClient.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
+            <state line="70" column="71" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.0749724">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JolokiaReadClient.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="JolokiaReadClient.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaReadClient.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="36" selection-start="2031" selection-end="2031" vertical-scroll-proportion="0.72767365">
+            <state line="49" column="78" selection-start="1676" selection-end="1695" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,9 +110,9 @@
         <option value="$PROJECT_DIR$/src/main/JolokiaGenericNagiosClient.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaNagiosSanityCheckClient.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaClient.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaSearchClient.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaGenericNagiosClient.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaReadClient.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaSearchClient.groovy" />
       </list>
     </option>
   </component>
@@ -146,7 +146,39 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile-jolokia-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile-jolokia-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile-jolokia-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile-jolokia-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="de.mobile.siteops.jolokia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,39 +227,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile-jolokia-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile-jolokia-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile-jolokia-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile-jolokia-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="de.mobile.siteops.jolokia" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,10 +248,10 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -445,23 +445,23 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaReadClient.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="78" selection-start="1676" selection-end="1695" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaGenericNagiosClient.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="98" selection-start="4082" selection-end="4086" vertical-scroll-proportion="-18.961538">
+        <state line="111" column="98" selection-start="4082" selection-end="4086" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaSearchClient.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/de/mobile/siteops/jolokia/JolokiaReadClient.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="36" selection-start="2031" selection-end="2031" vertical-scroll-proportion="0.72767365">
+        <state line="70" column="71" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.0749724">
           <folding />
         </state>
       </provider>
