@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_jolokia-client" default="compile.module.jolokia-client">
+  <dirname property="module.jolokia-client.basedir" file="${ant.file.module_jolokia-client}"/>
+  
+  <property name="module.jdk.home.jolokia-client" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.jolokia-client" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.jolokia-client" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.jolokia-client" value="${compiler.args}"/>
+  
+  <property name="jolokia-client.output.dir" value="${module.jolokia-client.basedir}/out/production/jolokia-client"/>
+  <property name="jolokia-client.testoutput.dir" value="${module.jolokia-client.basedir}/out/test/jolokia-client"/>
+  
+  <path id="jolokia-client.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="jolokia-client.module.production.classpath">
+    <path refid="${module.jdk.classpath.jolokia-client}"/>
+  </path>
+  
+  <path id="jolokia-client.runtime.production.module.classpath">
+    <pathelement location="${jolokia-client.output.dir}"/>
+  </path>
+  
+  <path id="jolokia-client.module.classpath">
+    <path refid="${module.jdk.classpath.jolokia-client}"/>
+    <pathelement location="${jolokia-client.output.dir}"/>
+  </path>
+  
+  <path id="jolokia-client.runtime.module.classpath">
+    <pathelement location="${jolokia-client.testoutput.dir}"/>
+    <pathelement location="${jolokia-client.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.jolokia-client">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.jolokia-client">
+    <patternset refid="excluded.from.module.jolokia-client"/>
+  </patternset>
+  
+  <path id="jolokia-client.module.sourcepath">
+    <dirset dir="${module.jolokia-client.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.jolokia-client" depends="compile.module.jolokia-client.production,compile.module.jolokia-client.tests" description="Compile module jolokia-client"/>
+  
+  <target name="compile.module.jolokia-client.production" depends="register.custom.compilers" description="Compile module jolokia-client; production classes">
+    <mkdir dir="${jolokia-client.output.dir}"/>
+    <javac2 destdir="${jolokia-client.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jolokia-client}/javac">
+      <compilerarg line="${compiler.args.jolokia-client}"/>
+      <bootclasspath refid="jolokia-client.module.bootclasspath"/>
+      <classpath refid="jolokia-client.module.production.classpath"/>
+      <src refid="jolokia-client.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.jolokia-client"/>
+    </javac2>
+    
+    <copy todir="${jolokia-client.output.dir}">
+      <fileset dir="${module.jolokia-client.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.jolokia-client.tests" depends="register.custom.compilers,compile.module.jolokia-client.production" description="compile module jolokia-client; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.jolokia-client" description="cleanup module">
+    <delete dir="${jolokia-client.output.dir}"/>
+    <delete dir="${jolokia-client.testoutput.dir}"/>
+  </target>
+</project>
