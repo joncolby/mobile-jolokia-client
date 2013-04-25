@@ -7,7 +7,7 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
 private final DEBUG = false
-private final VERSION = 1.0
+private final VERSION = 1.1
 
 def cli = new CliBuilder(usage:'java -jar <path/jarfile-name.jar> parameters')
 cli.with {
@@ -89,19 +89,21 @@ if (opt.'?')
      String firstAttributeResponseValue
 
      def isMap = false
-     if (response.getValue() instanceof Map ) {
+
+     def responseValue = response.getValue()
+     if (responseValue instanceof Map ) {
          isMap = true
-         firstAttributeResponseValue = response.getValue()."${thresholdTestAttribute}"
+         firstAttributeResponseValue = responseValue."${thresholdTestAttribute}"
      } else {
-         firstAttributeResponseValue = response.getValue()
+         firstAttributeResponseValue = responseValue
      }
 
      if (match) {
          if (firstAttributeResponseValue.equalsIgnoreCase(match)) {
-             println "OK: value of attribute ${thresholdTestAttribute} eq '${match}'"
+             println "OK: value of attribute ${thresholdTestAttribute} eq '${match}' " +  (isMap ? responseValue : "")
              System.exit(0)
          } else {
-             println "CRITICAL: value of attribute ${thresholdTestAttribute} '${firstAttributeResponseValue}' not eq '${match}'"
+             println "CRITICAL: value of attribute ${thresholdTestAttribute} '${firstAttributeResponseValue}' not eq '${match}' " +  (isMap ? responseValue : "")
              System.exit(2)
          }
      }
@@ -116,13 +118,13 @@ if (opt.'?')
         }
 
         if (testAttributeAsNumber>critical) {
-            println "CRITICAL: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${critical}"
+            println "CRITICAL: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${critical} " +  (isMap ? responseValue : "")
             System.exit(2)
         } else if (testAttributeAsNumber > warning) {
-            println "WARN: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${warning}"
+            println "WARN: ${thresholdTestAttribute} value ${testAttributeAsNumber} exceeds ${warning} " +  (isMap ? responseValue : "")
             System.exit(1)
         } else {
-            println "OK: ${thresholdTestAttribute} value ${testAttributeAsNumber} " +  (isMap ? response.getValue() : "")
+            println "OK: ${thresholdTestAttribute} value ${testAttributeAsNumber} " +  (isMap ? responseValue : "")
             System.exit(0)
         }
 
