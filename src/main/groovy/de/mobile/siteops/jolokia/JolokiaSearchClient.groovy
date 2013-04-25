@@ -7,7 +7,7 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option
 import javax.management.ObjectName;
 
-def cli = new CliBuilder(usage:'java -jar <jarfile-name.jar> parameters')
+def cli = new CliBuilder(usage:'java -cp <path/jarfile-name.jar> de.mobile.siteops.jolokia.JolokiaSearchClient parameters')
 cli.with {
     cli.'?'(longOpt: 'help', 'usage information')
     h(longOpt: 'host', required: true, args: 1, 'remote host')

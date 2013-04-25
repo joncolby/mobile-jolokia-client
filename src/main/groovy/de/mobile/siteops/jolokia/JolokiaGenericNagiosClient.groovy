@@ -6,7 +6,7 @@ import org.jolokia.client.exception.J4pException;
 import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
-def cli = new CliBuilder(usage:'java -jar <jarfile-name.jar> parameters')
+def cli = new CliBuilder(usage:'java -jar <path/jarfile-name.jar> parameters')
 cli.with {
     cli.'?'(longOpt: 'help', 'usage information')
     h(longOpt: 'host', required: true, args: 1, 'remote host')
