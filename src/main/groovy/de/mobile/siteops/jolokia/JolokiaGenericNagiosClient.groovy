@@ -7,7 +7,7 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
 private final DEBUG = false
-private final VERSION = 1.1
+private final VERSION = 1.2
 
 def cli = new CliBuilder(usage:'java -jar <path/jarfile-name.jar> parameters')
 cli.with {
@@ -100,10 +100,10 @@ if (opt.'?')
 
      if (match) {
          if (firstAttributeResponseValue.equalsIgnoreCase(match)) {
-             println "OK: value of attribute ${thresholdTestAttribute} eq '${match}' " +  (isMap ? responseValue : "")
+             println "OK: ${thresholdTestAttribute} eq '${match}' " +  (isMap ? responseValue : "")
              System.exit(0)
          } else {
-             println "CRITICAL: value of attribute ${thresholdTestAttribute} '${firstAttributeResponseValue}' not eq '${match}' " +  (isMap ? responseValue : "")
+             println "CRITICAL: ${thresholdTestAttribute} '${firstAttributeResponseValue}' not eq '${match}' " +  (isMap ? responseValue : "")
              System.exit(2)
          }
      }
