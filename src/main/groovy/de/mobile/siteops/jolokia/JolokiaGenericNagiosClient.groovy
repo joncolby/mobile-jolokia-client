@@ -6,6 +6,9 @@ import org.jolokia.client.exception.J4pException;
 import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
+private final DEBUG = false
+private final VERSION = 1.0
+
 def cli = new CliBuilder(usage:'java -jar <path/jarfile-name.jar> parameters')
 cli.with {
     cli.'?'(longOpt: 'help', 'usage information')
@@ -13,12 +16,19 @@ cli.with {
     p(longOpt: 'port', required: true, args: 1, 'remote port')
     b(longOpt: 'bean', required: true, args: 1, 'jmx bean name')
     a(longOpt: 'attribute', required: true, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'seperate multiple attributes with comma. First attribute will be used to evaluate nagios thresholds.')
-    w(longOpt: 'warn', required: false, args: 1, type: String, 'WARN threshold')
-    c(longOpt: 'critical', required: false, args: 1, type: String, 'CRITICAL threshold')
-    m(longOpt: 'match', required: false, args: 1, type: String, 'result must match this string or script will exit with CRITICAL status')
-    s(longOpt: 'subattribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'path names for complex attribute values')
-
+    w(longOpt: 'warn', required: false, args: 1, type: String, 'WARN threshold (optional)')
+    c(longOpt: 'critical', required: false, args: 1, type: String, 'CRITICAL threshold (optional)')
+    m(longOpt: 'match', required: false, args: 1, type: String, 'result must match this string or script will exit with CRITICAL status. (optional)')
+    s(longOpt: 'subattribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'path names for complex attribute values. (optional)')
+    v(longOpt: 'version', required: false, 'version information (optional)')
 }
+
+    def argList = []
+    argList << args
+     if (['-v','--version'].intersect(argList.flatten())) {
+         println "version ${VERSION}"
+         System.exit(0)
+     }
 
 def opt = cli.parse(args)
 if (!opt) // usage already displayed by cli.parse()

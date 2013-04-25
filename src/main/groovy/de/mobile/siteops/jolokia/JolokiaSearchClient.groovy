@@ -7,14 +7,26 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option
 import javax.management.ObjectName;
 
+private final DEBUG = false
+private final VERSION = 1.0
+
 def cli = new CliBuilder(usage:'java -cp <path/jarfile-name.jar> de.mobile.siteops.jolokia.JolokiaSearchClient parameters')
 cli.with {
     cli.'?'(longOpt: 'help', 'usage information')
     h(longOpt: 'host', required: true, args: 1, 'remote host')
     p(longOpt: 'port', required: true, args: 1, 'remote port')
     b(longOpt: 'bean', required: true, args: 1, 'jmx bean name')
-    a(longOpt: 'attribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'seperate multiple attributes with comma.')
+    a(longOpt: 'attribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'seperate multiple attributes with comma. (optional)')
+    v(longOpt: 'version', required: false, 'version information (optional)')
 }
+
+def argList = []
+argList << args
+ if (['-v','--version'].intersect(argList.flatten())) {
+     println "version ${VERSION}"
+     System.exit(0)
+ }
+
 
 def opt = cli.parse(args)
 if (!opt) // usage already displayed by cli.parse()

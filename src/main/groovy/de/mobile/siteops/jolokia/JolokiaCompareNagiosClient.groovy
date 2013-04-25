@@ -7,6 +7,7 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
 private final DEBUG = false
+private final VERSION = 1.0
 
 def cli = new CliBuilder(usage:'java -cp <path/jarfile-name.jar> de.mobile.siteops.jolokia.JolokiaCompareNagiosClient parameters')
 cli.with {
@@ -19,10 +20,19 @@ cli.with {
     c(longOpt: 'critical', required: true, args: 1, type: String, 'CRITICAL threshold in PERCENT')
     x(longOpt: 'maxattribute', required: true, args: 1, 'the attribute that specifies the max possible value')
     s(longOpt: 'stateattribute', required: true, args: 1, 'the attribute that specifies the current state')
-    o(longOpt: 'subattribute', required: false, args: 1, type: String, 'path name for complex mbean attribute')
+    o(longOpt: 'subattribute', required: false, args: 1, type: String, 'path name for complex mbean attribute (optional)')
+    v(longOpt: 'version', required: false, 'version information (optional)')
 }
 
+    def argList = []
+    argList << args
+ if (['-v','--version'].intersect(argList.flatten())) {
+     println "version ${VERSION}"
+     System.exit(0)
+ }
+
 def opt = cli.parse(args)
+
 if (!opt) // usage already displayed by cli.parse()
   System.exit(2)
 
@@ -40,6 +50,7 @@ if (opt.'?')
     def state = opt.s
     def maximum = opt.x
     def subattribute = opt.o
+    def version = opt.v
 
     if (warning && !critical) {
         println "ERROR: critical must also be specified"
