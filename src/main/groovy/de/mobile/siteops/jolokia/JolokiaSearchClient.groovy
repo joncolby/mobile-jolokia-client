@@ -15,7 +15,7 @@ cli.with {
     cli.'?'(longOpt: 'help', 'usage information')
     h(longOpt: 'host', required: true, args: 1, 'remote host')
     p(longOpt: 'port', required: true, args: 1, 'remote port')
-    b(longOpt: 'bean', required: true, args: 1, 'jmx bean name')
+    b(longOpt: 'bean', required: true, args: 1, 'jmx bean name pattern')
     a(longOpt: 'attribute', required: false, args: Option.UNLIMITED_VALUES, type: String, valueSeparator: ',', 'seperate multiple attributes with comma. (optional)')
     v(longOpt: 'version', required: false, 'version information (optional)')
 }
