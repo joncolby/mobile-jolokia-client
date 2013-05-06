@@ -7,7 +7,7 @@ import javax.management.InstanceNotFoundException;
 import org.apache.commons.cli.Option;
 
 private final DEBUG = false
-private final VERSION = 1.0
+private final VERSION = 1.1
 
 def cli = new CliBuilder(usage:'java -cp <path/jarfile-name.jar> de.mobile.siteops.jolokia.JolokiaCompareNagiosClient parameters')
 cli.with {
@@ -50,7 +50,6 @@ if (opt.'?')
     def state = opt.s
     def maximum = opt.x
     def subattribute = opt.o
-    def version = opt.v
 
     if (warning && !critical) {
         println "ERROR: critical must also be specified"
@@ -87,9 +86,12 @@ if (opt.'?')
     def objectList = response.objectNames
 
     if (objectList.size() > 1) {
-            println "more than one mbean object was found. Make the --bean pattern more specific"
+            println "ERROR: more than one mbean object was found. Make the --bean pattern more specific"
             objectList.each { System.err.println "--> " + it }
             System.exit(2)
+    } else if (objectList.size() < 1){
+            println "WARN: bean with pattern '" + bean + "' not found"
+            System.exit(1)
     }
 
     def objectName = objectList.pop()
